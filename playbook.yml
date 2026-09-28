@@ -1,0 +1,27 @@
+---
+- name: Redis Deployment
+  hosts: redis
+  become: yes
+
+  tasks:
+
+    - name: Install Redis
+      apt:
+        name: redis-server
+        state: present
+        update_cache: yes
+
+    - name: Ensure Redis service is enabled and running
+      systemd:
+        name: redis-server
+        enabled: yes
+        state: started
+
+    - name: Check Redis service status
+      command: systemctl is-active redis-server
+      register: redis_status
+      changed_when: false
+
+    - name: Display Redis status
+      debug:
+        msg: "Redis service status: {{ redis_status.stdout }}"
