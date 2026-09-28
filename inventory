@@ -1,2 +1,2 @@
 [redis]
-redis-server ansible_host=172.31.11.179 ansible_user=ubuntu ansible_ssh_private_key_file=/home/ubuntu/Jeet11.pem
+redis-server ansible_host=172.31.11.179 ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/Jeet11.pem
